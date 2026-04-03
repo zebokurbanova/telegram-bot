@@ -1,8 +1,21 @@
-from telegram import Update, ReplyKeyboardMarkup
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
-import random
 import os
+from telegram import Update
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+
 TOKEN = os.getenv("8532023991:AAER6Nz5-wEfRhsgteGCLbrsv_0OabT1tVU")
+
+if not TOKEN:
+    raise ValueError("❌ TOKEN is missing! Add it in Railway Variables")
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("Bot is working 🚀")
+
+app = ApplicationBuilder().token(8532023991:AAER6Nz5-wEfRhsgteGCLbrsv_0OabT1tVU).build()
+app.add_handler(CommandHandler("start", start))
+
+print("✅ Bot is starting...")
+
+
 
 themes = {
     "Algebra": [("5+5=?", "10"), ("8*2=?", "16"), ("(y+4)-(y-1)=6y", "5/6")],
